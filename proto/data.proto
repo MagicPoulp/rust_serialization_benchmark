@@ -1,0 +1,12 @@
+// proto/data.proto
+syntax = "proto3";
+
+package benchmark;
+
+message Data {
+  repeated int32 long_vector1 = 1;
+  string name = 2;
+  int32 id = 3;
+  repeated int32 long_vector2 = 4;
+  repeated string items = 5;
+}

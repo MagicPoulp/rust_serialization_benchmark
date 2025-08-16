@@ -1,6 +1,28 @@
+# Cargo.toml
+
 [package]
 name = "rust_serialization_benchmark"
 version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+# For prost (Protocol Buffers)
+prost = "~0.14.1"
+bytes = "~1.10.1" # Often used with prost for buffer management
+
+# For rkyv (Zero-copy serialization)
+rkyv = { version = "~0.8.11" }
+rkyv_derive = { version = "~0.8.11" }
+# The `validation` feature is important for safe zero-copy access.
+
+# For benchmarking
+criterion = { version = "~0.7.0", features = ["html_reports"] }
+
+[build-dependencies]
+# For prost to compile .proto files
+prost-build = "~0.14.1"
+
+# Configure the benchmark runner
+[[bench]]
+name = "serialization_benchmark"
+harness = false # Use criterion's harness instead of the default test harness
